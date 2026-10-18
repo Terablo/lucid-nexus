@@ -6,10 +6,10 @@
 [![Home Assistant 2024.4+](https://img.shields.io/badge/Home%20Assistant-2024.4%2B-41BDF5)](https://www.home-assistant.io/)
 [![License: MIT](https://img.shields.io/github/license/Terablo/lucid-nexus)](LICENSE)
 
-A live 3D dashboard for your Lucid, built for Home Assistant. The car on screen
-follows the real one: doors, frunk, trunk, windows, charge port, lights and
-ride height all move when the car does, and the controls you use most are one
-tap away.
+A live 3D dashboard for your Lucid Gravity, Air or Air Sapphire, built for
+Home Assistant. The car on screen follows the real one: doors, frunk, trunk,
+windows, mirrors, charge port, lights and ride height all move when the car
+does, and the controls you use most are one tap away.
 
 ![Lucid Nexus showing a Lucid Gravity on a Home Assistant dashboard](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/hero.webp)
 
@@ -33,13 +33,18 @@ and the Dream Edition badges match what your car reports.
 
 ![Opening and closing the driver door](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/doors.webp)
 
+![An Air Sapphire folding its mirrors as it locks](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/sapphire-mirror-fold.gif)
+
 **Charging, shown as it happens.** When you plug in, the camera swings to the
 port, the flap opens, the cable seats and the session panel slides out with
 the live power trace, time to finish, range added and a Stop button. The
 Charging page also has the charge limit, the current limiter and your charge
-history.
+history. The Gravity plugs in with a NACS handle, the Air and Sapphire with
+CCS1 through their own port door.
 
 ![Plugging in: the port opens, the cable seats and the session panel appears](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/charging.webp)
+
+![An Air charging on CCS1](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/air-ccs1-charging.gif)
 
 **Driving view.** Shift out of Park and the car takes to the road. The lane
 markings move at the car's real speed, the scenery streams past, and the
@@ -54,18 +59,24 @@ controls if you want to tune the look.
 
 ![The same car at night, headlights on](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/night.webp)
 
-**Climate and seats.** Set the cabin temperature and mode, and drive every
-heated or ventilated seat and the steering wheel from a seat-by-seat cabin
-plan. The card finds these controls automatically.
+**Climate and seats.** Set the cabin temperature and mode, use Defrost or
+Max A/C in one tap, and drive every heated or ventilated seat and the steering
+wheel from a seat-by-seat cabin plan. While Pet Mode or Keep Climate holds the
+cabin, the card says so. It finds these controls automatically.
 
 ![The climate page](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/climate.webp)
 
+![Defrost and Max A/C on the climate page](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/climate-presets.gif)
+
 **Make it yours.** The Wrap Studio has factory paints, any custom colour,
 gloss, satin or matte finishes, and wheel designs and finishes. You can also
-set window tint, ride height, the ambient light strip and upholstery colour.
-These are display choices only: the car itself is not changed.
+set window tint, ride height, upholstery colour and the cabin's ambient light,
+in any colour or as an RGB wave. These are display choices only: the car itself
+is not changed.
 
 ![Repainting the car in the Wrap Studio](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/wrap.webp)
+
+![The Air's cabin with its ambient light changing colour](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/air-ambient-colour.gif)
 
 **Phone, tablet or wall.** The layout adapts from a desktop down to a phone,
 including the Home Assistant Companion app. Layout choices such as columns,
@@ -73,6 +84,19 @@ interface scale and the information panel's position are remembered per
 device.
 
 ![Lucid Nexus on a phone, with its climate page](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/phone.webp)
+
+**Share Screenshot.** Settings > Share Screenshot makes a picture of the card
+or a looping GIF of the moments worth showing: a drive, the lock and unlock
+lights, a door, the charge flap or a charge. Hide VIN and map is on every time,
+and Hide speed takes the speed out of a drive. Share, save or copy it; nothing
+is uploaded.
+
+![A drive GIF made with the card's own Share button](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/share-drive-sapphire.gif)
+
+**Send Feedback.** Settings > Send Feedback sends us a message from inside Home
+Assistant, with a picture of the card (map, zone name and VIN removed, shown to
+you first) and, if you choose, your drive data without GPS. Nothing is sent
+until you confirm.
 
 **A family of cards.** Beside the full dashboard there are nine smaller cards
 you can drop into the dashboards you already have. Most of them need no 3D,
@@ -106,8 +130,8 @@ in. To do it by hand instead:
 3. Reload your browser when prompted.
 
 HACS registers the dashboard resource for you, so there is no URL to add.
-Everything the card needs ships in the release, including the Gravity and Air
-3D models, the scenes and the fonts. The download is about 27 MB on disk: the
+Everything the card needs ships in the release, including the 3D models for
+all three cars, the scenes and the fonts. The download is about 27 MB on disk: the
 16 MB of files plus a pre-compressed copy of each, which Home Assistant serves
 to browsers in their place. The first time a browser opens the card it fetches
 about 3 MB, and after that it loads from cache.
@@ -224,7 +248,7 @@ them.
 | --- | --- |
 | **Gravity** | Fully supported |
 | **Air** | Early access |
-| **Sapphire** | Early access. The model is streamed rather than bundled (see [Privacy](#privacy)). |
+| **Air Sapphire** | Early access |
 
 The card reads your model from Home Assistant's device registry. To choose it
 yourself, set `model: gravity | air | sapphire`.
@@ -233,9 +257,9 @@ yourself, set `model: gravity | air | sapphire`.
 The card was built and tuned on a Gravity. An Air or a Sapphire loads like any
 car, with a small EARLY ACCESS badge in the corner. Hover over the badge to see
 the features that model cannot show yet. Depending on the model, these include
-fender flares, seat colour, stealth trim, the animated light sequences and the
-fender badges. The animated charge cable is also Gravity-only for now. If you own an Air or a Sapphire,
-reports from you are what will move it out of early access.
+fender flares, seat colour, stealth trim, lamp brightness matched to the real
+car and the fender badges. If you own an Air or a Sapphire, reports from you
+are what will move it out of early access.
 
 Versions before v0.3.33 needed `early_access_ack: true` before they would show
 an Air or a Sapphire. That is no longer needed, and leaving it in your
@@ -350,23 +374,25 @@ the integration last received. The information panel says how long the car has
 been asleep. Use the Wake button if your integration has one.
 
 **You run a Content-Security-Policy on a reverse proxy.** Add
-`https://lucidwraps.studio` to `connect-src` if you use the Sapphire. Stock
-Home Assistant needs no change.
+`https://drives.lucidwraps.studio` to `connect-src` if you want to use Send
+Feedback. Stock Home Assistant needs no change.
 
 ## Privacy
 
 - The card talks to **your Home Assistant**. Every reading and command goes
   through the Lucid Motors integration's entities, and the card never contacts
   Lucid's servers itself.
-- Everything for the Gravity and the Air ships in the release and is served by
-  your Home Assistant. That includes the models, scenes, fonts and 3D decoder.
-- **The Sapphire model is the exception.** It is streamed from
-  `lucidwraps.studio` and then cached in your browser. It is only fetched for a
-  Sapphire, whether the card detects one or you set `model: sapphire`. The same host also keeps a few optional extra
-  scenes that a default card never loads.
+- Everything for all three cars ships in the release and is served by your
+  Home Assistant. That includes the models, scenes, fonts and 3D decoder.
+  `lucidwraps.studio` keeps a few optional extra scenes that a default card
+  never loads.
 - **Map tiles** for the card's map come from OpenStreetMap.
-- Settings and charge history are stored in your browser. Nothing is sent
-  anywhere else.
+- **Share Screenshot** makes its picture or GIF on your device. Nothing is
+  uploaded.
+- **Send Feedback** sends your message, and the picture and drive data you
+  chose, to `drives.lucidwraps.studio`, only when you confirm.
+- Settings and charge history are stored in your browser. Nothing else is sent
+  anywhere.
 
 ## Authors
 
@@ -374,8 +400,10 @@ Home Assistant needs no change.
   of the card
 - **[Terablo](https://github.com/Terablo)**
 
-Bug reports and real-car feedback, especially from Air and Sapphire owners,
-are welcome in [Issues](https://github.com/Terablo/lucid-nexus/issues).
+Bug reports, screenshots and real-car feedback, especially from Air and
+Sapphire owners, are welcome in
+[Issues](https://github.com/Terablo/lucid-nexus/issues) or through Send
+Feedback in the card.
 
 ## Licensing
 
