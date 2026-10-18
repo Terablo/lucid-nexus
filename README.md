@@ -51,7 +51,7 @@ markings move at the car's real speed, the scenery streams past, and the
 headlights light up the road at night. While the car is moving, the controls
 that would command it are locked.
 
-![Driving at night](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/driving.webp)
+![A Gravity driving at night, headlights on the road](https://raw.githubusercontent.com/Terablo/lucid-nexus/main/images/driving-night.gif)
 
 **Day and night.** The scene follows the sun, from a daylight river valley to
 a moonlit night. Seven scenes are included, with exposure, colour and glow
